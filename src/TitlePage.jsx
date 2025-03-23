@@ -1,4 +1,5 @@
 import { useTheme } from "next-themes";
+import { Link } from "react-router-dom";
 
 export default function TitlePage() {
     const { theme } = useTheme();
@@ -14,21 +15,21 @@ export default function TitlePage() {
             <p className={`px-30 py-5 text-lg ${theme === 'dark' ? 'text-gray-400' : 'text-gray-300'} mb-6`}>
             Coverly helps you craft personalized, professional cover letters that grab employers’ attention and help you land your next job.
             </p>
-            <button className="bg-[#8270DB] text-white px-6 py-3 rounded-full hover:bg-[#B8ACF6]">
+            <Link to="/signup" className="bg-[#8270DB] text-white px-6 py-3 rounded-full hover:bg-[#B8ACF6] mt-5 mb-5">
                 Get Started →
-            </button>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-2 py-15">
+            </Link>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-2 py-15 mb-30">
                 <div className="bg-transparent p-4 text-center">
                     <p className="text-3xl font-bold text-[#B8ACF6]">XX</p>
-                    <p className={`text-lg ${theme === 'dark' ? 'text-gray-400' : 'text-gray-300'}`}>Cover Letters Created</p>
+                    <p className={`text-md ${theme === 'dark' ? 'text-gray-400' : 'text-gray-300'}`}>Cover Letters Created</p>
                 </div>
                 <div className="bg-transparent p-4 text-center">
                     <p className="text-3xl font-bold text-[#B8ACF6]">XXs</p>
-                    <p className={`text-lg ${theme === 'dark' ? 'text-gray-400' : 'text-gray-300'}`}>Generation Time</p>
+                    <p className={`text-md ${theme === 'dark' ? 'text-gray-400' : 'text-gray-300'}`}>Generation Time</p>
                 </div>
                 <div className="bg-transparent p-4 text-center">
                     <p className="text-3xl font-bold text-[#B8ACF6]">X.X/5</p>
-                    <p className={`text-lg ${theme === 'dark' ? 'text-gray-400' : 'text-gray-300'}`}>User Rating</p>
+                    <p className={`text-md ${theme === 'dark' ? 'text-gray-400' : 'text-gray-300'}`}>User Rating</p>
                 </div>
             </div>
         </section>

@@ -2,6 +2,7 @@
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { Moon, Sun } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
     const { theme, setTheme } = useTheme();
@@ -17,12 +18,9 @@ export default function Navbar() {
     }
 
     return (
-        <nav className={`flex justify-between items-center text-white ${theme === 'dark' ? 'bg-white' : 'bg-[#200445]'} fixed top-0 left-0 px-15 py-5 w-full`}>
+        <nav className={`flex justify-between items-center ${theme === 'dark' ? 'bg-white' : 'bg-[#200445]'} fixed top-0 left-0 px-15 py-5 w-full`}>
             { /* logo */ }
-            <div className="flex items-center space-x-1">
-                <img src="src/assets/logo.png" alt="logo" className="w-10.5 h-8"/>
-                <span className={`${theme === 'dark' ? 'text-[#2B273F]' : 'text-white'} text-2xl font-semibold"`}>Coverly</span>
-            </div>
+            <Link to="/" className={`${theme === 'dark' ? 'text-[#200445]' : 'text-white'} text-2xl font-bold`}>Coverly</Link>
 
             { /* buttons */ }
             <div className="flex items-center space-x-8">
@@ -41,8 +39,8 @@ export default function Navbar() {
                         )}
                     </button>
                 )}
-                <button className={`${theme === 'dark' ? 'text-[#2B273F]' : 'text-white'}`}>Log in</button>
-                <button className={`bg-[#8270DB] ${theme === 'dark' ? 'text-white' : 'text-[#2B273F]'} px-4 py-2 rounded-md hover:bg-[#B8ACF6]`}>Sign up</button>
+                <Link to="/login" className={`${theme === 'dark' ? 'text-[#2B273F]' : 'text-white'}`}>Sign in</Link>
+                <Link to="/signup" className={`bg-[#8270DB] ${theme === 'dark' ? 'text-white' : 'text-[#2B273F]'} px-4 py-2 rounded-md hover:bg-[#B8ACF6]`}>Sign up</Link>
             </div>
         </nav>
     );

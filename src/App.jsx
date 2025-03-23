@@ -1,16 +1,25 @@
 import React from "react";
-import Navbar from "./Navbar"; 
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "next-themes";
-import './style.css';
+import Navbar from "./Navbar"; 
 import TitlePage from "./TitlePage";
+import LoginPage from "./Login";
+import SignupPage from "./Signup";
+import './style.css';
 
 const App = () => {
   return (
     <ThemeProvider defaultTheme="light" attribute="class">
-      <div>
-        <Navbar/>
-        <TitlePage/>
-      </div>
+      <Router>
+        <Navbar />
+        <main>
+          <Routes>
+            <Route path="/" element={<TitlePage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/signup" element={<SignupPage />} />
+          </Routes>
+        </main>
+      </Router>
     </ThemeProvider>
   );
 };
