@@ -2,9 +2,11 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "next-themes";
 import Navbar from "./Navbar"; 
-import TitlePage from "./TitlePage";
-import LoginPage from "./Login";
-import SignupPage from "./Signup";
+import Home from "./Home";
+import Signin from "./Signin";
+import Signup from "./Signup";
+import Dashboard from "./Dashboard";
+import Editor from "./Editor";
 import './style.css';
 
 const App = () => {
@@ -14,9 +16,11 @@ const App = () => {
         <Navbar />
         <main>
           <Routes>
-            <Route path="/" element={<TitlePage />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/signup" element={<SignupPage />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/signin" element={<Signin />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/editor" element={<Editor />} />
           </Routes>
         </main>
       </Router>

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { auth, GoogleAuthProvider } from "./firebase"; 
 import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 
-export default function SignUpPage () {
+export default function SignUp () {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -22,7 +22,7 @@ export default function SignUpPage () {
 
         try {
             await createUserWithEmailAndPassword(auth, email, password);
-            navigate("/login"); // navigate to login after successful sign up
+            navigate("/signin"); // navigate to login after successful sign up
         } catch (error) {
             setError(error.message);
         }
@@ -32,7 +32,7 @@ export default function SignUpPage () {
         const provider = new GoogleAuthProvider();
         try {
             const result = await signInWithPopup(auth, provider);
-            navigate("/login"); // navigate to login after successful Google sign up
+            navigate("/signin"); // navigate to login after successful Google sign up
         } catch (error) {
             setError(error.message);
         }
@@ -129,7 +129,7 @@ export default function SignUpPage () {
     
             {/* link to login */}
             <div className="mt-6 text-center">
-                <p className="text-sm text-gray-600">Already have an account? <a href="/login" className="text-[#8270DB] hover:underline">Sign In</a></p>
+                <p className="text-sm text-gray-600">Already have an account? <a href="/signin" className="text-[#8270DB] hover:underline">Sign In</a></p>
             </div>
           </div>
         </div>

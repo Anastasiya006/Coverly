@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { auth, GoogleAuthProvider } from "./firebase"; 
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 
-export default function LoginPage () {
+export default function SignIn () {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState(""); 

@@ -39,7 +39,7 @@ export default function Navbar() {
                         )}
                     </button>
                 )}
-                <Link to="/login" className={`${theme === 'dark' ? 'text-[#2B273F]' : 'text-white'}`}>Sign in</Link>
+                <Link to="/editor" className={`${theme === 'dark' ? 'text-[#2B273F]' : 'text-white'}`}>Sign in</Link>
                 <Link to="/signup" className={`bg-[#8270DB] ${theme === 'dark' ? 'text-white' : 'text-[#2B273F]'} px-4 py-2 rounded-md hover:bg-[#B8ACF6]`}>Sign up</Link>
             </div>
         </nav>
