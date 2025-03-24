@@ -66,7 +66,7 @@ export default function SignUp () {
                     type="email"
                     id="email"
                     name="email"
-                    placeholder="example@example.com" 
+                    placeholder="example@email.com" 
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required

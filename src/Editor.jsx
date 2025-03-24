@@ -25,7 +25,7 @@ export default function LatexPreview() {
         { name: "Recipient", icon: "M3 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H3Zm2.5 5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM10 5.75a.75.75 0 0 1 .75-.75h1.5a.75.75 0 0 1 0 1.5h-1.5a.75.75 0 0 1-.75-.75Zm.75 3.75a.75.75 0 0 0 0 1.5h1.5a.75.75 0 0 0 0-1.5h-1.5ZM10 8a.75.75 0 0 1 .75-.75h1.5a.75.75 0 0 1 0 1.5h-1.5A.75.75 0 0 1 10 8Zm-2.378 3c.346 0 .583-.343.395-.633A2.998 2.998 0 0 0 5.5 9a2.998 2.998 0 0 0-2.517 1.367c-.188.29.05.633.395.633h4.244Z" },
         { name: "Job Details", icon: "M11.986 3H12a2 2 0 0 1 2 2v6a2 2 0 0 1-1.5 1.937V7A2.5 2.5 0 0 0 10 4.5H4.063A2 2 0 0 1 6 3h.014A2.25 2.25 0 0 1 8.25 1h1.5a2.25 2.25 0 0 1 2.236 2ZM10.5 4v-.75a.75.75 0 0 0-.75-.75h-1.5a.75.75 0 0 0-.75.75V4h3Z M3 6a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H3Zm1.75 2.5a.75.75 0 0 0 0 1.5h3.5a.75.75 0 0 0 0-1.5h-3.5ZM4 11.75a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 0 1.5h-3.5a.75.75 0 0 1-.75-.75Z" },
         { name: "Generate", icon: "M7.25 1.75a.75.75 0 0 1 1.5 0v1.5a.75.75 0 0 1-1.5 0v-1.5ZM11.536 2.904a.75.75 0 1 1 1.06 1.06l-1.06 1.061a.75.75 0 0 1-1.061-1.06l1.06-1.061ZM14.5 7.5a.75.75 0 0 0-.75-.75h-1.5a.75.75 0 0 0 0 1.5h1.5a.75.75 0 0 0 .75-.75ZM4.464 9.975a.75.75 0 0 1 1.061 1.06l-1.06 1.061a.75.75 0 1 1-1.061-1.06l1.06-1.061ZM4.5 7.5a.75.75 0 0 0-.75-.75h-1.5a.75.75 0 0 0 0 1.5h1.5a.75.75 0 0 0 .75-.75ZM5.525 3.964a.75.75 0 0 1-1.06 1.061l-1.061-1.06a.75.75 0 0 1 1.06-1.061l1.061 1.06ZM8.779 7.438a.75.75 0 0 0-1.368.366l-.396 5.283a.75.75 0 0 0 1.212.646l.602-.474.288 1.074a.75.75 0 1 0 1.449-.388l-.288-1.075.759.11a.75.75 0 0 0 .726-1.165L8.78 7.438Z" },
-        { name: "AI Support", icon: "M1 8.74c0 .983.713 1.825 1.69 1.943.764.092 1.534.164 2.31.216v2.351a.75.75 0 0 0 1.28.53l2.51-2.51c.182-.181.427-.286.684-.294a44.298 44.298 0 0 0 3.837-.293C14.287 10.565 15 9.723 15 8.74V4.26c0-.983-.713-1.825-1.69-1.943a44.447 44.447 0 0 0-10.62 0C1.712 2.435 1 3.277 1 4.26v4.482ZM5.5 6.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm2.5 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm3.5 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" },
+        { name: "AI Support", icon: "M1 8.849c0 1 .738 1.851 1.734 1.947L3 10.82v2.429a.75.75 0 0 0 1.28.53l1.82-1.82A3.484 3.484 0 0 1 5.5 10V9A3.5 3.5 0 0 1 9 5.5h4V4.151c0-1-.739-1.851-1.734-1.947a44.539 44.539 0 0 0-8.532 0C1.738 2.3 1 3.151 1 4.151V8.85Z M7 9a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-.25v1.25a.75.75 0 0 1-1.28.53L9.69 12H9a2 2 0 0 1-2-2V9Z" },
     ];
 
     // generate PDF
@@ -87,7 +87,7 @@ export default function LatexPreview() {
                 </div>
             </div>
             {/* left side - input */}
-            <div className="w-4/10 p-4">
+            <div className="w-4/10">
                 {selectedForm === "Contact" && <ContactForm />}
                 {selectedForm === "Education" && <EducationForm />}
                 {selectedForm === "Experience" && <ExperienceForm />}
@@ -115,12 +115,402 @@ export default function LatexPreview() {
     );
 }
 
-// Dummy components for each form
-const ContactForm = () => <div>Contact Form</div>;
-const EducationForm = () => <div>Education Form</div>;
+// components for each form
+const ContactForm = () => {
+    const [contact, setContact] = useState({
+        name: "",
+        email: "",
+        phone: "",
+        linkedin: "",
+    });
+
+    const handleChange = (e) => {
+        setContact({ ...contact, [e.target.name]: e.target.value });
+    };
+
+    return (
+        <div className="bg-white p-4 rounded-md shadow-lg text-[#2B273F] h-full">
+            <h2 className="text-lg font-bold mb-1">Contact Information</h2>
+            <p className="text-sm font-normal text-left text-gray-400 mb-6">Enter your contact details.</p>
+            
+            <div className="mb-3">
+                <label className="block text-sm font-medium">Full Name</label>
+                <input 
+                    type="text"
+                    name="name"
+                    value={contact.name}
+                    onChange={handleChange}
+                    className="w-full p-2 border border-gray-300 rounded-md text-sm font-normal"
+                    placeholder="John Doe"
+                />
+            </div>
+
+            <div className="mb-3">
+                <label className="block text-sm font-medium">Email</label>
+                <input 
+                    type="email"
+                    name="email"
+                    value={contact.email}
+                    onChange={handleChange}
+                    className="w-full p-2 border border-gray-300 rounded-md text-sm font-normal"
+                    placeholder="example@email.com"
+                />
+            </div>
+
+            <div className="mb-3">
+                <label className="block text-sm font-medium">Phone</label>
+                <input 
+                    type="tel"
+                    name="phone"
+                    value={contact.phone}
+                    onChange={handleChange}
+                    className="w-full p-2 border border-gray-300 rounded-md text-sm font-normal"
+                    placeholder="(123) 456-7890"
+                />
+            </div>
+
+            <div className="mb-3">
+                <label className="block text-sm font-medium">LinkedIn</label>
+                <input 
+                    type="url"
+                    name="linkedin"
+                    value={contact.linkedin}
+                    onChange={handleChange}
+                    className="w-full p-2 border border-gray-300 rounded-md text-sm font-normal"
+                    placeholder="linkedin.com/in/name"
+                />
+            </div>
+        </div>
+    );
+};
+
+const EducationForm = () => {
+    const [education, setEducation] = useState({
+        school: "",
+        degree: "",
+        fieldOfStudy: "",
+        graduationYear: "",
+    });
+
+    const degrees = ["High School Diploma", "Associate's", "Bachelor's", "Master's", "PhD", "Other"];
+
+    const handleChange = (e) => {
+        setEducation({ ...education, [e.target.name]: e.target.value });
+    };
+
+    return (
+        <div className="bg-white p-4 rounded-md shadow-lg text-[#2B273F] h-full">
+            <h2 className="text-lg font-bold mb-1">Education</h2>
+            <p className="text-sm font-normal text-left text-gray-400 mb-6">Enter your most recent education.</p>
+
+            {/* School Name */}
+            <div className="mb-3">
+                <label className="block text-sm font-medium">School Name</label>
+                <input
+                    type="text"
+                    name="school"
+                    value={education.school}
+                    onChange={handleChange}
+                    placeholder="University of Waterloo"
+                    className="w-full p-2 border border-gray-300 rounded-md text-sm font-normal"
+                />
+            </div>
+
+            {/* Degree Dropdown */}
+            <div className="mb-3">
+                <label className="block text-sm font-medium">Degree</label>
+                <select
+                    name="degree"
+                    value={education.degree}
+                    onChange={handleChange}
+                    className="w-full p-2 border border-gray-300 rounded-md text-sm font-normal"
+                >
+                    <option value="">Select Degree</option>
+                    {degrees.map((deg, index) => (
+                        <option key={index} value={deg}>
+                            {deg}
+                        </option>
+                    ))}
+                </select>
+            </div>
+
+            {/* Field of Study */}
+            <div className="mb-3">
+                <label className="block text-sm font-medium">Field of Study</label>
+                <input
+                    type="text"
+                    name="fieldOfStudy"
+                    value={education.fieldOfStudy}
+                    onChange={handleChange}
+                    placeholder="Computer Engineering"
+                    className="w-full p-2 border border-gray-300 rounded-md text-sm font-normal"
+                />
+            </div>
+
+            {/* Graduation Year */}
+            <div className="mb-3">
+                <label className="block text-sm font-medium">Graduation Year</label>
+                <input
+                    type="number"
+                    name="graduationYear"
+                    value={education.graduationYear}
+                    onChange={handleChange}
+                    placeholder="YYYY"
+                    className="w-full p-2 border border-gray-300 rounded-md text-sm font-normal"
+                />
+            </div>
+        </div>
+    );
+};
+
 const ExperienceForm = () => <div>Experience Form</div>;
-const SkillsForm = () => <div>Skills Form</div>;
-const RecipientForm = () => <div>Recipient Form</div>;
-const JobDetailsForm = () => <div>Job Details Form</div>;
+
+const SkillsForm = () => {
+    const [skills, setSkills] = useState([
+        { skill: "", level: "" }
+    ]);
+
+    const skillLevels = ["Beginner", "Intermediate", "Advanced"];
+
+    const handleSkillChange = (e, index) => {
+        const newSkills = [...skills];
+        newSkills[index][e.target.name] = e.target.value;
+        setSkills(newSkills);
+    };
+
+    const handleAddSkill = () => {
+        setSkills([...skills, { skill: "", level: "" }]);
+    };
+
+    const handleRemoveSkill = (index) => {
+        const newSkills = skills.filter((_, i) => i !== index);
+        setSkills(newSkills);
+    };
+
+    return (
+        <div className="bg-white p-4 rounded-md shadow-lg text-[#2B273F] h-full">
+            <h2 className="text-lg font-bold mb-4">Skills</h2>
+
+            {skills.map((skill, index) => (
+                <div key={index} className="mb-4">
+                    {/* Skill Name */}
+                    <div className="mb-2">
+                        <label className="block text-sm font-medium text-gray-700">Skill {index + 1}</label>
+                        <input
+                            type="text"
+                            name="skill"
+                            value={skill.skill}
+                            onChange={(e) => handleSkillChange(e, index)}
+                            placeholder="Enter skill name"
+                            className="w-full p-2 border rounded-md"
+                        />
+                    </div>
+
+                    {/* Skill Level Dropdown */}
+                    <div className="mb-2">
+                        <label className="block text-sm font-medium text-gray-700">Skill Level</label>
+                        <select
+                            name="level"
+                            value={skill.level}
+                            onChange={(e) => handleSkillChange(e, index)}
+                            className="w-full p-2 border rounded-md"
+                        >
+                            <option value="">Select Skill Level</option>
+                            {skillLevels.map((level, i) => (
+                                <option key={i} value={level}>
+                                    {level}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+
+                    {/* Remove Skill Button */}
+                    <button
+                        type="button"
+                        onClick={() => handleRemoveSkill(index)}
+                        className="text-red-500 hover:text-red-700 text-sm"
+                    >
+                        Remove Skill
+                    </button>
+                </div>
+            ))}
+
+            {/* Add More Skills Button */}
+            <button
+                type="button"
+                onClick={handleAddSkill}
+                className="text-blue-500 hover:text-blue-700 text-sm"
+            >
+                Add More Skills
+            </button>
+        </div>
+    );
+};
+
+const RecipientForm = () => {
+    const [contact, setContact] = useState({
+        company: "",
+        street: "",
+        city: "",
+        state: "",
+        zipcode: ""
+    });
+
+    const handleChange = (e) => {
+        setContact({ ...contact, [e.target.name]: e.target.value });
+    };
+
+    return (
+        <div className="bg-white p-4 rounded-md shadow-lg text-[#2B273F] h-full">
+            <h2 className="text-lg font-bold mb-1">Recipient Information</h2>
+            <p className="text-sm font-normal text-left text-gray-400 mb-6">Enter your recipient's details.</p>
+            
+            <div className="mb-3">
+                <label className="block text-sm font-medium">Company</label>
+                <input 
+                    type="text"
+                    name="company"
+                    value={contact.company}
+                    onChange={handleChange}
+                    className="w-full p-2 border border-gray-300 rounded-md text-sm font-normal"
+                    placeholder="Coverly"
+                />
+            </div>
+
+            <div className="mb-3">
+                <label className="block text-sm font-medium">Street</label>
+                <input 
+                    type="text"
+                    name="street"
+                    value={contact.street}
+                    onChange={handleChange}
+                    className="w-full p-2 border border-gray-300 rounded-md text-sm font-normal"
+                    placeholder="123 Main Street"
+                />
+            </div>
+
+            <div className="mb-3">
+                <label className="block text-sm font-medium">City</label>
+                <input 
+                    type="text"
+                    name="city"
+                    value={contact.city}
+                    onChange={handleChange}
+                    className="w-full p-2 border border-gray-300 rounded-md text-sm font-normal"
+                    placeholder="New York"
+                />
+            </div>
+
+            <div className="mb-3">
+                <label className="block text-sm font-medium">State</label>
+                <input 
+                    type="text"
+                    name="state"
+                    value={contact.state}
+                    onChange={handleChange}
+                    className="w-full p-2 border border-gray-300 rounded-md text-sm font-normal"
+                    placeholder="NY"
+                />
+            </div>
+
+            <div className="mb-3">
+                <label className="block text-sm font-medium">Zip Code</label>
+                <input 
+                    type="text"
+                    name="zipcode"
+                    value={contact.zipcode}
+                    onChange={handleChange}
+                    className="w-full p-2 border border-gray-300 rounded-md text-sm font-normal"
+                    placeholder="10001"
+                />
+            </div>
+        </div>
+    );
+};
+
+
+
+const JobDetailsForm = () => {
+    const [jobDetails, setJobDetails] = useState("");
+
+    const handleChange = (e) => {
+        setJobDetails({ jobDetails, [e.target.name]: e.target.value });
+    };
+
+    return (
+        <div className="bg-white p-4 rounded-md shadow-lg text-[#2B273F] h-full">
+            <h2 className="text-lg font-bold mb-1">Job Details</h2>
+            <p className="text-sm font-normal text-left text-gray-400 mb-6">Paste the job posting description.</p>
+            
+            <div className="mb-3">
+                <label className="block text-sm font-medium">Description</label>
+                <textarea 
+                    name="jobDetails"
+                    value={jobDetails}
+                    onChange={handleChange}
+                    className="w-full p-2 border border-gray-300 rounded-md text-sm font-normal resize-none overflow-y-auto"
+                    placeholder="Paste here..."
+                    rows="22"
+                />
+            </div>
+        </div>
+    );
+};
+
+
+
+
 const GenerateForm = () => <div>Generate Form</div>;
-const AISupportForm = () => <div>AI Support Form</div>;
+
+const AISupportForm = () => {
+  const [message, setMessage] = useState('');
+  const [chatHistory, setChatHistory] = useState([]);
+
+  const handleSendMessage = async () => {
+    if (!message) return;
+
+    // Add the user's message to chat history
+    setChatHistory([...chatHistory, { sender: 'user', text: message }]);
+    setMessage('');
+
+    try {
+      // Send user message to Flask backend
+      const response = await fetch('http://127.0.0.1:5000/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message }),
+      });
+
+      const data = await response.json();
+      if (data.response) {
+        setChatHistory([...chatHistory, { sender: 'user', text: message }, { sender: 'ai', text: data.response }]);
+      } else {
+        alert('Error: ' + data.error);
+      }
+    } catch (error) {
+      console.error('Error sending message to the backend:', error);
+    }
+  };
+
+  return (
+    <div className="bg-white p-4 rounded-md shadow-lg text-[#2B273F] h-full">
+      <h2 className="text-lg font-bold mb-1">AI Support</h2>
+      <div>
+        {chatHistory.map((chat, index) => (
+          <div key={index} className={chat.sender}>
+            <strong>{chat.sender === 'user' ? 'You: ' : 'AI: '}</strong>
+            <span>{chat.text}</span>
+          </div>
+        ))}
+      </div>
+      <input
+        type="text"
+        value={message}
+        onChange={(e) => setMessage(e.target.value)}
+        placeholder="Type your message"
+      />
+      <button onClick={handleSendMessage}>Send</button>
+    </div>
+  );
+};
+
