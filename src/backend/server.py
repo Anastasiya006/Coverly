@@ -1,11 +1,13 @@
-import openai
 import os
+from openai import OpenAI
 from dotenv import load_dotenv
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 
 # Load environment variables
 load_dotenv()
+
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 # Set up Flask app
 app = Flask(__name__)
@@ -14,7 +16,6 @@ app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "http://localhost:5173"}})
 
 # Set OpenAI API key
-openai.api_key = os.getenv("OPENAI_API_KEY")
 
 @app.route("/chat", methods=["POST"])
 def chat():
@@ -26,16 +27,14 @@ def chat():
 
     try:
         # Updated API call format for OpenAI Chat API (using v1/chat/completions)
-        response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",  # Or use 'gpt-4' if available
-            messages=[
-                {"role": "system", "content": "You are a helpful assistant."},  # Optional system message
-                {"role": "user", "content": user_message}  # User's message
-            ]
-        )
+        response = client.chat.completions.create(model="gpt-3.5-turbo",  # Or use 'gpt-4' if available
+        messages=[
+            {"role": "system", "content": "You are a helpful assistant."},  # Optional system message
+            {"role": "user", "content": user_message}  # User's message
+        ])
 
         # Extract the reply from the response
-        reply = response['choices'][0]['message']['content'].strip()
+        reply = response.choices[0].message.content.strip()
         return jsonify({"reply": reply})
 
     except Exception as e:

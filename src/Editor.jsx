@@ -52,7 +52,7 @@ export default function LatexPreview() {
     return (
         <div className="flex h-screen gap-10 px-15 py-30 bg-gray-100">
             {/* vertical sidebar */}
-            <div className="w-50 flex flex-col justify-betweenw-1/4 bg-gray-800 text-white p-4 bg-white rounded-md">
+            <div className="w-50 flex flex-col justify-betweenw-1/4 bg-gray-800 text-white p-4 bg-white rounded-md shadow-lg">
                 <ul>
                     {sidebarItems.map((item) => (
                         <li
@@ -465,29 +465,70 @@ const GenerateForm = () => <div>Generate Form</div>;
 
 const AISupportForm = () => {
     const [message, setMessage] = useState("");
-    const [response, setResponse] = useState("");
-  
+    const [messages, setMessages] = useState([]); // Store chat messages
+    
     const sendMessage = async () => {
       if (!message.trim()) return;
   
+      // Save the user's message
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        { sender: "user", text: message },
+      ]);
+      setMessage(""); // Clear input field
+  
       try {
+        // Send message to backend and get response
         const res = await axios.post("http://localhost:5003/chat", { message });
-        setResponse(res.data.reply);
+        // Save the AI's response
+        setMessages((prevMessages) => [
+          ...prevMessages,
+          { sender: "ai", text: res.data.reply },
+        ]);
       } catch (error) {
-        setResponse("Error connecting to the server.");
+        setMessages((prevMessages) => [
+          ...prevMessages,
+          { sender: "ai", text: "Error connecting to the server." },
+        ]);
       }
     };
   
     return (
-      <div>
-        <h1>Chat with OpenAI</h1>
+      <div className="bg-white p-4 rounded-md shadow-lg text-[#2B273F] h-full">
+        <h1 className="text-lg font-bold mb-4">AI Support</h1>
+  
+        {/* Chat box */}
+        <div
+          className="h-90 overflow-y-auto p-4 mb-4 bg-white border border-gray-300 rounded-md"
+        >
+          {messages.map((msg, index) => (
+            <div
+              key={index}
+              className={`mb-3 p-2 rounded-md max-w-[80%] text-sm ${
+                msg.sender === "user" ? "bg-[#DFD8FD] text-right ml-auto" : "bg-gray-200 text-left"
+              }`}
+            >
+              <div className="font-bold">{msg.sender === "user" ? "You:" : "AI:"}</div>
+              <div>{msg.text}</div>
+            </div>
+          ))}
+        </div>
+  
+        {/* Message input */}
         <textarea
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           placeholder="Type a message..."
+          rows={3}
+          className="w-full p-2 border border-gray-300 rounded-md text-sm font-normal mb-4 resize-none overflow-y-auto"
         />
-        <button onClick={sendMessage}>Send</button>
-        <p><strong>Response:</strong> {response}</p>
+  
+        <button
+          onClick={sendMessage}
+          className="w-full p-2 bg-[#8270DB] text-white rounded-md cursor-pointer"
+        >
+          Send
+        </button>
       </div>
     );
   };
