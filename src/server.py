@@ -1,20 +1,20 @@
 import os
 from flask import Flask, request, jsonify
-import openai
 from dotenv import load_dotenv
+import openai
 from flask_cors import CORS
-
-# Initialize Flask app
-app = Flask(__name__)
 
 # Load environment variables from .env file
 load_dotenv()
 
-# Set OpenAI API key securely
-openai.api_key = os.getenv('OPENAI_API_KEY')
+# Initialize Flask app
+app = Flask(__name__)
 
 # Enable CORS for all routes (for cross-origin requests)
 CORS(app)
+
+# Set OpenAI API key
+openai.api_key = os.getenv('OPENAI_API_KEY')
 
 # API route to handle user input and get AI response
 @app.route('/chat', methods=['POST'])
@@ -27,18 +27,18 @@ def chat():
         if not user_message:
             return jsonify({'error': 'No message provided'}), 400
 
-        # Send user message to OpenAI API to get a response
-        response = openai.Completion.create(
-            engine="text-davinci-003",  # Choose the engine you prefer (you can use GPT-3 engines)
-            prompt=user_message,
-            max_tokens=150,  # Adjust response length
-            n=1,
-            stop=None,
-            temperature=0.7,  # Adjust creativity (higher is more creative)
+        # Send user message to OpenAI API to get a response using ChatCompletion
+        response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",  # You can use the model you prefer here
+            messages=[
+                {"role": "user", "content": user_message}
+            ],
+            max_tokens=150,
+            temperature=0.7
         )
 
         # Get the AI's reply from the response
-        ai_reply = response.choices[0].text.strip()
+        ai_reply = response['choices'][0]['message']['content'].strip()
 
         # Return the AI response to the frontend
         return jsonify({'response': ai_reply})

@@ -465,6 +465,7 @@ const GenerateForm = () => <div>Generate Form</div>;
 const AISupportForm = () => {
   const [message, setMessage] = useState('');
   const [chatHistory, setChatHistory] = useState([]);
+  const socketConnection = new WebSocket('ws://localhost:5000');
 
   const handleSendMessage = async () => {
     if (!message) return;
