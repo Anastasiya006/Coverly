@@ -2,6 +2,7 @@ import { useState } from "react";
 import * as pdfMake from "pdfmake/build/pdfmake";
 import { pdfMakeVfs } from "pdfmake/build/vfs_fonts";
 import { UserIcon, DocumentTextIcon } from "@heroicons/react/24/outline";
+import axios from "axios";
 
 pdfMake.vfs = pdfMakeVfs;
 
@@ -463,55 +464,30 @@ const JobDetailsForm = () => {
 const GenerateForm = () => <div>Generate Form</div>;
 
 const AISupportForm = () => {
-  const [message, setMessage] = useState('');
-  const [chatHistory, setChatHistory] = useState([]);
-  const socketConnection = new WebSocket('ws://localhost:5000');
-
-  const handleSendMessage = async () => {
-    if (!message) return;
-
-    // Add the user's message to chat history
-    setChatHistory([...chatHistory, { sender: 'user', text: message }]);
-    setMessage('');
-
-    try {
-      // Send user message to Flask backend
-      const response = await fetch('http://127.0.0.1:5000/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message }),
-      });
-
-      const data = await response.json();
-      if (data.response) {
-        setChatHistory([...chatHistory, { sender: 'user', text: message }, { sender: 'ai', text: data.response }]);
-      } else {
-        alert('Error: ' + data.error);
+    const [message, setMessage] = useState("");
+    const [response, setResponse] = useState("");
+  
+    const sendMessage = async () => {
+      if (!message.trim()) return;
+  
+      try {
+        const res = await axios.post("http://localhost:5003/chat", { message });
+        setResponse(res.data.reply);
+      } catch (error) {
+        setResponse("Error connecting to the server.");
       }
-    } catch (error) {
-      console.error('Error sending message to the backend:', error);
-    }
-  };
-
-  return (
-    <div className="bg-white p-4 rounded-md shadow-lg text-[#2B273F] h-full">
-      <h2 className="text-lg font-bold mb-1">AI Support</h2>
+    };
+  
+    return (
       <div>
-        {chatHistory.map((chat, index) => (
-          <div key={index} className={chat.sender}>
-            <strong>{chat.sender === 'user' ? 'You: ' : 'AI: '}</strong>
-            <span>{chat.text}</span>
-          </div>
-        ))}
+        <h1>Chat with OpenAI</h1>
+        <textarea
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          placeholder="Type a message..."
+        />
+        <button onClick={sendMessage}>Send</button>
+        <p><strong>Response:</strong> {response}</p>
       </div>
-      <input
-        type="text"
-        value={message}
-        onChange={(e) => setMessage(e.target.value)}
-        placeholder="Type your message"
-      />
-      <button onClick={handleSendMessage}>Send</button>
-    </div>
-  );
-};
-
+    );
+  };
